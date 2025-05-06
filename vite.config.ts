@@ -14,4 +14,15 @@ export default defineConfig({
       cert: fs.readFileSync(path.resolve(__dirname, 'certs/cert.pem')),
     },
   },
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, 'src/index.ts'),
+      name: 'AdSdk',
+      fileName: 'ad-sdk',
+      formats: ['iife'], // Use IIFE format for browser compatibility
+    },
+    rollupOptions: {
+      input: path.resolve(__dirname, 'src/index.ts'),
+    },
+  },
 })

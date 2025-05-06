@@ -22,5 +22,8 @@
   },
   "eslintConfig": {
     "extends": "preact"
-  }
+  },
+  "sideEffects": [
+    "src/index.ts"
+  ]
 }
