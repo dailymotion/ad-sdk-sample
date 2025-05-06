@@ -1,4 +1,4 @@
-## <img src="http://svgshare.com/i/Gd.svg" height="16px"> PV-XXXX
+## <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" height="16px"> ADP-XXXX
 
 ### Description
 
