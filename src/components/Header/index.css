@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    align-items: center;
+    font-family: 'ABCFavorit', sans-serif;
+    padding: 0 1rem;
+    max-height: 3rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    max-width: 8rem;
+}
+
+.title {
+    font-size: 0.75rem;
+    font-family: ABCFavorit, sans-serif;
+    font-style: italic;
+    padding-top: 0.5rem;
+}

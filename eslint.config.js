@@ -1,44 +1,28 @@
-import js from "@eslint/js"
-import globals from "globals"
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
-import css from "@eslint/css"
-import {defineConfig} from "eslint/config"
 
-export default defineConfig([
-  ...tseslint.configs.recommended,
+export default tseslint.config(
+  { ignores: ['dist'] },
   {
-    files: ["**/*.{js,ts}"],
-    plugins: {js},
-    extends: ["js/recommended"],
-    rules: {
-      semi: ["error", "never"],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
     },
-  },
-  {
-    files: ["**/*.{js,ts}"],
-    languageOptions: {globals: globals.browser}
-  },
-  {
-    files: ["**/*.{ts,tsx}"],
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
     rules: {
-      "@typescript-eslint/no-unused-vars": [
-        "error",
-        {
-          args: "all",
-          argsIgnorePattern: "^_",
-          caughtErrors: "all",
-          caughtErrorsIgnorePattern: "^_",
-          destructuredArrayIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
-          ignoreRestSiblings: true,
-        },
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
       ],
     },
   },
-  {
-    files: ["**/*.css"],
-    plugins: {css},
-    language: "css/css",
-    extends: ["css/recommended"]
-  },
-])
+)

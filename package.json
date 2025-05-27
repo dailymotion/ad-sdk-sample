@@ -1,27 +1,32 @@
 {
-  "name": "ad-sdk-web-core",
-  "version": "0.0.1",
+  "name": "ad-sdk-sample",
   "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
     "preview": "vite preview",
-    "style": "eslint ."
+    "predeploy": "rm -rf docs",
+    "deploy": "npm run build && cp docs/index.html docs/404.html"
   },
   "dependencies": {
-    "preact": "^10.25.3"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.26.0",
-    "@eslint/css": "^0.7.0",
-    "@preact/preset-vite": "^2.9.3",
-    "eslint": "^9.26.0",
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7",
+    "@eslint/js": "^9.25.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.32.0",
-    "vite": "^6.2.0"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.5"
   }
 }

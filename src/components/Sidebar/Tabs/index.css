@@ -1,0 +1,36 @@
+.tabs-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    background: none;
+    border: none;
+    color: var(--black);
+    position: relative;
+    font-family: DailySans, sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.tab.active {
+    color: var(--purple);
+}
+
+.tab:hover {
+    color: var(--light-purple);
+}
+
+.tab-indicator {
+    position: absolute;
+    top: 5rem;
+    height: 3px;
+    background-color: var(--purple);
+    transition: transform 0.3s ease, width 0.3s ease;
+    width: 100%;
+    transform: translateX(0);
+}
