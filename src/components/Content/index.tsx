@@ -2,7 +2,8 @@ import type { JSX } from "react";
 import { useLocation } from "react-router-dom";
 import VideoTag from "./VideoTag";
 import WorkInProgress from "./WorkInProgress";
-import {useMenu} from "../menuContext.tsx";
+import { useMenu } from "../menuContext.tsx";
+import Code from "./Code";
 import './index.css';
 
 const Content = (): JSX.Element => {
@@ -14,7 +15,12 @@ const Content = (): JSX.Element => {
 
     if (isClassic) {
         if (menu === "stream") {
-            return <VideoTag />;
+            return (
+                <div className="contentWrapper">
+                    <VideoTag />
+                    <Code />
+                </div>
+            );
         } else {
             return <WorkInProgress />;
         }

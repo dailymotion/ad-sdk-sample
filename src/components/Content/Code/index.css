@@ -1,0 +1,34 @@
+.codeWrapper {
+    width: 100%;
+    height: auto;
+}
+
+.subtitle {
+    font-family: DailySans, serif;
+    margin-top: 2rem;
+}
+
+.codeNav {
+    display: flex;
+    gap: 1rem;
+}
+
+.codeButton {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--black);
+    color: var(--black);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+    font-family: 'ABCFavorit', sans-serif;
+}
+
+.codeButton:hover {
+    background: var(--light-grey);
+}
+
+.codeButton.active {
+    background: var(--purple);
+    color: white;
+}
