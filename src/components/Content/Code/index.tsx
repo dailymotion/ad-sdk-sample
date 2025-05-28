@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import './index.css';
+import {CopyIcon} from "./CopyIcon.tsx";
 
 const htmlCode = `<!DOCTYPE html>
 <html lang="en">
@@ -85,6 +86,14 @@ videoTag.addEventListener('play', startAd);
 
 const Code = () => {
     const [activeTab, setActiveTab] = useState<"html" | "css" | "js">("html");
+    const [copied, setCopied] = useState(false);
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText("npm install @dailymotion/ad-sdk-web").then(() => {
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        });
+    };
 
     const renderCode = () => {
         switch (activeTab) {
@@ -100,6 +109,21 @@ const Code = () => {
     return (
         <div className="codeWrapper">
             <h3 className="subtitle">How to implement our Ad SDK</h3>
+            <p className="codeText">
+                Install SDK:</p>
+            <div className="codeTextWrapper">
+                <SyntaxHighlighter
+                    language="bash"
+                    style={okaidia}
+                    wrapLongLines
+                >
+                    npm install @dailymotion/ad-sdk-web
+                </SyntaxHighlighter>
+                <button className="copyButton" onClick={copyToClipboard}>
+                    <CopyIcon/>
+                    {copied ? "Copied!" : "Copy"}
+                </button>
+            </div>
             <nav className="codeNav">
                 {["html", "css", "js"].map((tab) => (
                     <button
