@@ -1,0 +1,26 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+}
+
+.menu-button {
+    border:none;
+    background-color: var(--white);
+    color: var(--grey);
+    font-size: 0.875rem;
+    font-family: ABCFavorit, sans-serif;
+    padding: 0.75rem 0.5rem 0.75rem 2.25rem;
+    text-align: left;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.menu-button:hover {
+    color: var(--black);
+}
+
+.menu-button.active {
+    color: var(--purple);
+    background-color: var(--pink);
+}

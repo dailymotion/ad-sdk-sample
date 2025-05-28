@@ -1,0 +1,17 @@
+.videoWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.videoPlayerContainer {
+    position: relative;
+    margin: 2rem;
+    height: 50vh;
+    width: auto;
+}
+
+.videoPlayer {
+    height: 100%;
+    width: auto;
+}
