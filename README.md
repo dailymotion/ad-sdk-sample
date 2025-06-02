@@ -213,7 +213,7 @@ Updates the SDK with a new state payload.
 | position | 'preroll' \| 'midroll' \| 'postroll' | Indicates the ad position relative to the main content. |
 
 
-## Ad Events
+## AdEvents
 
 | Parameter | Description |
 | -------- | -------- |
