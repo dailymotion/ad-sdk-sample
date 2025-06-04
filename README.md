@@ -2,7 +2,8 @@
 # Ad SDK Web
 
 A lightweight web wrapper for Dailymotion's Ad SDK – load, manage, and interact with video ads easily in modern web players.
-[![npm](https://img.shields.io/npm/v/ad-sdk-web-api.svg)](https://www.npmjs.com/package/ad-sdk-web-api)
+
+[![npm](https://img.shields.io/npm/v/@dailymotion/ad-sdk-web.svg)](https://www.npmjs.com/package/@dailymotion/ad-sdk-web)
 
 ##  📘 Public API Documentation
 
@@ -116,6 +117,7 @@ Updates the SDK with a new state payload.
   👉 **See full structure below** or jump to [AppState](#AppState)
 
 ---
+<br />
 
 # Data structures
 
@@ -198,6 +200,7 @@ Updates the SDK with a new state payload.
 | creator.avatar | Object |  false | Information about the creator’s avatar image. |
 | creator.avatar.url | string | false | URL of the creator’s avatar image. |
 
+<br />
 
 # Internal data models
 
@@ -228,6 +231,8 @@ Updates the SDK with a new state payload.
 | AD_SKIP | Sent when the user click on the skip button |
 | AD_ERROR | Sent when an error preventing to play an ad occurs |
 
+
+<br />
 
 ## Events lifecycle
 
