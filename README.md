@@ -20,8 +20,9 @@ If the container is missing or the script fails to load.
 ---
 
 
-### `loadAds(appState: AppState): void`
-Loads ads with the required contextual information.
+### `loadAdsSequence(appState: AppState): void`
+Loads ads sequence with the required contextual information.
+Susceptible to automatically starting a preroll.
 
 **Parameters:**
 - `appState`: `AppState`

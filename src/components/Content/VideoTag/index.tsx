@@ -74,7 +74,7 @@ const VideoTag: () => JSX.Element = () => {
                 },
             }
 
-            await adSDK.loadAds(appState);
+            await adSDK.loadAdsSequence(appState);
         };
 
         const videoTag = videoRef.current;
