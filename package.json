@@ -12,7 +12,7 @@
     "deploy": "npm run build && cp docs/index.html docs/404.html"
   },
   "dependencies": {
-    "@dailymotion/ad-sdk-web": "^0.0.3",
+    "@dailymotion/ad-sdk-web": "^0.0.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1",

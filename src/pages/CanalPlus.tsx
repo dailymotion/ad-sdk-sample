@@ -1,10 +1,10 @@
 import type {JSX} from "react";
 import WorkInProgress from "../components/Content/WorkInProgress";
 
-const Classic: () => JSX.Element = () => {
+const CanalPlus: () => JSX.Element = () => {
     return (
         <WorkInProgress/>
     )
 }
 
-export default Classic
+export default CanalPlus

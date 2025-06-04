@@ -75,10 +75,42 @@ const startAd = async () => {
   adSDK.on(adSDK.Events.AD_END, onAdEnd);
 
   const appState = {
-    // your appState here...
-  };
+    consent: {
+      ccpaConsent: '',
+      tcfConsent: '',
+      isEnabledForTcf: false,
+      tcf2HasConsentForGoogle: false,
+      tcf2HasConsentForDailymotion: false,
+      isGdprApplicable: false,
+    },
+    video: {
+      id: 'x123',
+      isAutoplay: false,
+      type: 'STREAM',
+      isCurrentTimeDVR: false,
+      isSeekable: false,
+      viewId: '',
+      duration: 62,
+    },
+    environment: {
+      appName: '',
+      locale: '',
+      topDomain: '',
+      embedder: '',
+      clientType: '',
+      deviceId: '',
+      trafficSegment: 0,
+      v1st: '',
+    },
+    player: {
+      videoTag: videoTag,
+      isPlayerControlsEnabled: false,
+      is3rdPartyCookiesAvailable: false,
+      playedVideosCounter: 0,
+    },
+  }
 
-  await adSDK.loadAds(appState);
+  await adSDK.loadAdsSequence(appState);
 };
 
 videoTag.addEventListener('play', startAd);
