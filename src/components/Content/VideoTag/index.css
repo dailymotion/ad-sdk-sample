@@ -1,16 +1,10 @@
-.videoWrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
 .videoPlayerContainer {
     position: relative;
-    height: 50vh;
     width: auto;
+    height: 100%;
+    aspect-ratio: 16/9;
 }
 
 .videoPlayer {
-    height: 100%;
-    width: auto;
+    max-width: 50vw;
 }

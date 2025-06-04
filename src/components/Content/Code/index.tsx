@@ -13,32 +13,24 @@ const htmlCode = `<!DOCTYPE html>
     <script type="module" src="./index.ts"></script>
   </head>
   <body>
-    <div class="videoWrapper">
-      <div class="videoPlayerContainer">
-        <video id="videoPlayer" class="videoPlayer" controls muted>
-          <source src="video-url.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+    <div class="videoPlayerContainer">
+      <video id="videoPlayer" class="videoPlayer" controls muted>
+        <source src="video-url.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   </body>
 </html>`;
 
-const cssCode = `.videoWrapper {
-  display: flex;
-  justify-content: center;
-}
-
-.videoPlayerContainer {
-  position: relative;
-  margin: 2rem;
-  height: 50vh;
-  width: auto;
+const cssCode = `.videoPlayerContainer {
+    position: relative;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 16/9;
 }
 
 .videoPlayer {
-  height: 100%;
-  width: auto;
+    max-width: 50vw;
 }`;
 
 const jsCode = `import { AdSdkWeb } from '../src/AdSdkWeb.ts'
