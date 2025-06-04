@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run copy-files",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "rm -rf docs",
-    "deploy": "npm run build && cp docs/index.html docs/404.html"
+    "copy-files": "cp docs/index.html docs/404.html && cp node_modules/@dailymotion/ad-sdk-web/README.md ./README.md"
   },
   "dependencies": {
-    "@dailymotion/ad-sdk-web": "^0.0.4",
+    "@dailymotion/ad-sdk-web": "^0.0.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1",

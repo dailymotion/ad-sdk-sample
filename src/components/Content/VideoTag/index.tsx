@@ -5,8 +5,8 @@ import type { AppState } from '@dailymotion/ad-sdk-web';
 import { useEffect, useRef } from "react";
 
 const VideoTag: () => JSX.Element = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const videoRef = useRef<HTMLVideoElement | null>(null);
 
     useEffect(() => {
         const startAd = async () => {
