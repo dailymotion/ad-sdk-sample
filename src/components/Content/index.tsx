@@ -5,6 +5,7 @@ import WorkInProgress from "./WorkInProgress";
 import { useMenu } from "../menuContext.tsx";
 import Code from "./Code";
 import './index.css';
+import { VersionTag } from "./VersionTag";
 
 const Content = (): JSX.Element => {
     const location = useLocation();
@@ -17,6 +18,7 @@ const Content = (): JSX.Element => {
         if (menu === "stream") {
             return (
                 <div className="contentWrapper">
+                    <VersionTag />
                     <VideoTag />
                     <Code />
                 </div>

@@ -3,7 +3,7 @@ export const CopyIcon = (): JSX.Element => {
     return (
         <svg
             role="img"
-            aria-label="Copy"
+            aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             className="copy_icon"
             viewBox="0 0 24 24"

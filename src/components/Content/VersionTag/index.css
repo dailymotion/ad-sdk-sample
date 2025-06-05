@@ -1,0 +1,29 @@
+.version-tag {
+    background-color: var(--pink);
+    font-family: 'ABCFavorit', sans-serif;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.875rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.version-tag:hover {
+    background-color: var(--light-purple);
+    color: var(--white);
+}
+
+.version-tag:active {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+.external-link-icon {
+    max-width: 1rem;
+    padding-left: 0.25rem;
+    padding-bottom: 0.2rem;
+}

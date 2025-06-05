@@ -85,7 +85,6 @@ const VideoTag: () => JSX.Element = () => {
     }, []);
 
     return (
-        <div className="videoWrapper">
             <div className="videoPlayerContainer" ref={containerRef}>
                 <video
                     id="videoPlayer"
@@ -101,7 +100,6 @@ const VideoTag: () => JSX.Element = () => {
                     Your browser does not support the video tag.
                 </video>
             </div>
-        </div>
     )
 }
 
