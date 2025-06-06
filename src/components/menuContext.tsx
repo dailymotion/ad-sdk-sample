@@ -23,7 +23,7 @@ export const MenuProvider = ({ children }: { children: ReactNode }) => {
 export const useMenu = (): MenuContextType => {
     const context = useContext(MenuContext);
     if (!context) {
-        throw new Error("useMenu must be used within a MenuProvider");
+        throw new Error("useMenu must be used within a MenuProvider.");
     }
     return context;
 };
