@@ -9,7 +9,7 @@ const pkg = JSON.parse(
     )
 )
 export default defineConfig({
-  base: '/ad-sdk-sample',
+  base: './',
   build: {
     outDir: 'docs',
   },
