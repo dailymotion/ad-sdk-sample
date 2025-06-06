@@ -1,7 +1,7 @@
 import './App.css'
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import Content from "./components/Content";
 import {MenuProvider} from "./components/menuContext.tsx";
 
