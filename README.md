@@ -219,11 +219,11 @@ Updates the SDK with a new state payload.
 
 ## Preroll sequence
 
-<img src="https://statics.dmcdn.net/h/ad-sdk-web/preroll_sequence.png" alt="Preroll sequence" width="500"/>
+<img src="https://statics.dmcdn.net/h/ad-sdk-web/preroll_sequence.png?v1" alt="Preroll sequence" width="500"/>
 
 ## Midroll sequence
-<img src="https://statics.dmcdn.net/h/ad-sdk-web/midroll_sequence.png" alt="Midroll sequence" width="500"/>
+<img src="https://statics.dmcdn.net/h/ad-sdk-web/midroll_sequence.png?v1" alt="Midroll sequence" width="500"/>
 
 ## Postroll sequence
-<img src="https://statics.dmcdn.net/h/ad-sdk-web/postroll_sequence.png" alt="Postroll sequence" width="500"/>
+<img src="https://statics.dmcdn.net/h/ad-sdk-web/postroll_sequence.png?v1" alt="Postroll sequence" width="500"/>
 
