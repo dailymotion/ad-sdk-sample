@@ -14,9 +14,8 @@ const htmlCode = `<!DOCTYPE html>
   </head>
   <body>
     <div class="videoPlayerContainer">
-      <video id="videoPlayer" class="videoPlayer" controls muted>
+      <video id="videoPlayer" class="videoPlayer" controls>
         <source src="video-url.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
     </div>
   </body>
@@ -33,24 +32,27 @@ const cssCode = `.videoPlayerContainer {
     max-width: 50vw;
 }`;
 
-const jsCode = `import { AdSdkWeb } from '../src/AdSdkWeb.ts'
+const jsCode = `import { AdSdkWeb } from '@dailymotion/ad-sdk-web';
 
 const container = document.querySelector('.videoPlayerContainer');
 const videoTag = document.getElementById('videoPlayer');
 
+const adSDK = new AdSdkWeb();
+
+const initAdSdk = async () => {
+  await adSDK.initialize(container);
+
+  videoTag.addEventListener('play', startAd);
+}
 const startAd = async () => {
   videoTag.removeEventListener('play', startAd);
   videoTag.pause();
-
-  const adSDK = new AdSdkWeb();
-  await adSDK.initialize(container);
 
   let adPosition = null;
 
   const onAdStart = () => {
     adPosition = adSDK.getAdDetails().position;
     videoTag.pause();
-    console.log(\`Ad Started at position: \${adPosition}\`);
   };
 
   const onAdEnd = () => {
@@ -105,7 +107,7 @@ const startAd = async () => {
   await adSDK.loadAdsSequence(appState);
 };
 
-videoTag.addEventListener('play', startAd);
+initAdSdk();
 `;
 
 const Code = () => {
