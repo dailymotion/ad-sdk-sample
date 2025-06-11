@@ -44,29 +44,37 @@ const initAdSdk = async () => {
 
   videoTag.addEventListener('play', startAd);
 }
-const startAd = async () => {
-  videoTag.removeEventListener('play', startAd);
-  videoTag.pause();
 
-  let adPosition = null;
+const loadAdsSequence = async () => {
+  videoTag.removeEventListener('play', loadAdsSequence)
+  videoTag.pause()
+
+  let adPosition = null
+
+  const onContentPauseRequested = () => {
+    videoTag.pause()
+  }
+
+  const onContentResumeRequested = () => {
+    if (adSDK.getAdDetails().position !== 'postroll') {
+      videoTag.play()
+    }
+  }
 
   const onAdStart = () => {
-    adPosition = adSDK.getAdDetails().position;
-    videoTag.pause();
-  };
+    adPosition = adSDK.getAdDetails().position
+    console.log(\`Ad Started at position: \${adPosition}\`)
+  }
 
   const onAdEnd = () => {
-    console.log('Ad Ended');
-    if (adSDK.getAdDetails().position !== 'postroll') {
-      videoTag.play();
-    }
+    console.log('Ad ended')
+  }
 
-    adSDK.off(adSDK.Events.AD_START, onAdStart);
-    adSDK.off(adSDK.Events.AD_END, onAdEnd);
-  };
+  adSDK.on(adSDK.Events.CONTENT_PAUSE_REQUESTED, onContentPauseRequested)
+  adSDK.on(adSDK.Events.CONTENT_RESUME_REQUESTED, onContentResumeRequested)
 
-  adSDK.on(adSDK.Events.AD_START, onAdStart);
-  adSDK.on(adSDK.Events.AD_END, onAdEnd);
+  adSDK.on(adSDK.Events.AD_START, onAdStart)
+  adSDK.on(adSDK.Events.AD_END, onAdEnd)
 
   const appState = {
     consent: {
@@ -104,10 +112,10 @@ const startAd = async () => {
     },
   }
 
-  await adSDK.loadAdsSequence(appState);
-};
+  await adSDK.loadAdsSequence(appState)
+}
 
-initAdSdk();
+initAdSdk()
 `;
 
 const Code = () => {

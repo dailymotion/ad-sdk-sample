@@ -4,6 +4,29 @@ A lightweight web wrapper for Dailymotion's Ad SDK – load, manage, and interac
 
 [![npm](https://img.shields.io/npm/v/@dailymotion/ad-sdk-web.svg)](https://www.npmjs.com/package/@dailymotion/ad-sdk-web)
 
+## ⚙️ Required HTML & CSS Setup for the Player Container
+To use our Ad SDK Web, you must define an HTML player container element styled correctly to hold both your content video tag and Ad SDK playback elements.
+
+### CSS styles to add
+```
+.videoPlayerContainer {
+  position: relative;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+}
+```
+
+`.videoPlayerContainer` is the wrapper where the SDK mounts the ad container and your video element.
+
+The container is positioned relative to allow absolute positioning of ad overlays if needed.
+
+The aspect ratio keeps the player consistent across screen sizes.
+
+## Example implementation reference
+ 👉 Check out an example implementation here:
+https://dailymotion.github.io/ad-sdk-sample/
+
 ## 📘 Public API Documentation
 
 ### `async initialize(playerContainer: HTMLElement): Promise<void>`
