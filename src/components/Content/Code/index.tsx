@@ -42,7 +42,7 @@ const adSDK = new AdSdkWeb();
 const initAdSdk = async () => {
   await adSDK.initialize(container);
 
-  videoTag.addEventListener('play', startAd);
+  videoTag.addEventListener('play', loadAdsSequence);
 }
 
 const loadAdsSequence = async () => {
@@ -60,6 +60,10 @@ const loadAdsSequence = async () => {
       videoTag.play()
     }
   }
+  
+  const onAdLoad = () => {
+     console.log('Ad loaded')
+  }
 
   const onAdStart = () => {
     adPosition = adSDK.getAdDetails().position
@@ -69,12 +73,24 @@ const loadAdsSequence = async () => {
   const onAdEnd = () => {
     console.log('Ad ended')
   }
+  
+  const onAdBreakStart = (): void => {
+    console.log('Ad break started')
+  }
+  
+  const onAdBreakEnd = (): void => {
+    console.log('Ad break ended')
+  }
 
   adSDK.on(adSDK.Events.CONTENT_PAUSE_REQUESTED, onContentPauseRequested)
   adSDK.on(adSDK.Events.CONTENT_RESUME_REQUESTED, onContentResumeRequested)
 
+  adSDK.on(adSDK.Events.AD_LOAD, onAdLoad)
   adSDK.on(adSDK.Events.AD_START, onAdStart)
   adSDK.on(adSDK.Events.AD_END, onAdEnd)
+  adSDK.on(adSDK.Events.AD_BREAK_START, onAdBreakStart)
+  adSDK.on(adSDK.Events.AD_BREAK_END, onAdBreakEnd)
+          
 
   const appState = {
     consent: {
@@ -110,6 +126,10 @@ const loadAdsSequence = async () => {
       is3rdPartyCookiesAvailable: false,
       playedVideosCounter: 0,
     },
+  }
+  
+  const developmentOptions = {
+     useFakeAd: true
   }
 
   await adSDK.loadAdsSequence(appState)

@@ -1,13 +1,17 @@
 # Ad SDK Web
 
-A lightweight web wrapper for Dailymotion's Ad SDK – load, manage, and interact with video ads easily in modern web players.
+A lightweight web wrapper for Dailymotion's Ad SDK – load, manage, and interact with video ads easily in modern web
+players.
 
 [![npm](https://img.shields.io/npm/v/@dailymotion/ad-sdk-web.svg)](https://www.npmjs.com/package/@dailymotion/ad-sdk-web)
 
 ## ⚙️ Required HTML & CSS Setup for the Player Container
-To use our Ad SDK Web, you must define an HTML player container element styled correctly to hold both your content video tag and Ad SDK playback elements.
+
+To use our Ad SDK Web, you must define an HTML player container element styled correctly to hold both your content video
+tag and Ad SDK playback elements.
 
 ### CSS styles to add
+
 ```
 .videoPlayerContainer {
   position: relative;
@@ -24,7 +28,8 @@ The container is positioned relative to allow absolute positioning of ad overlay
 The aspect ratio keeps the player consistent across screen sizes.
 
 ## Example implementation reference
- 👉 Check out an example implementation here:
+
+👉 Check out an example implementation here:
 https://dailymotion.github.io/ad-sdk-sample/
 
 ## 📘 Public API Documentation
@@ -44,13 +49,16 @@ If the container is missing or the script fails to load.
 
 ---
 
-### `loadAdsSequence(appState: AppState): void`
+### `loadAdsSequence(appState: AppState, developmentOptions?: DevelopmentOptions): void`
 
 Loads ads sequence with the provided contextual information. <br />
 
-After this call, the ad SDK will listen to the progress of the video and will trigger an `AD_BREAK_START` event whenever an ad break is about to begin. When this event occurs, the video player is expected to pause playback. Playback should resume only after the corresponding AD_BREAK_END event is received. <br />
+After this call, the ad SDK will listen to the progress of the video and will trigger an `AD_BREAK_START` event whenever
+an ad break is about to begin. When this event occurs, the video player is expected to pause playback. Playback should
+resume only after the corresponding AD_BREAK_END event is received. <br />
 
-A preroll ad may start automatically after this call. If no preroll is available, the SDK will send an AD_BREAK_END event to indicate that content playback can proceed.<br />
+A preroll ad may start automatically after this call. If no preroll is available, the SDK will send an AD_BREAK_END
+event to indicate that content playback can proceed.<br />
 
 This method should be called once per video, before starting the main content.
 
@@ -59,6 +67,9 @@ This method should be called once per video, before starting the main content.
 - `appState`: `AppState`
   A structured object providing ad targeting and playback environment data.  
   👉 **See full structure below** or jump to [AppState](#AppState)
+- `developmentOptions`: `DevelopmentOptions`
+  Optional settings used only during development.
+  👉 **See full structure below** or jump to [DevelopmentOptions](#DevelopmentOptions)
 
 ---
 
@@ -155,7 +166,7 @@ Updates the SDK with a new state payload.
 ## AppState
 
 | Parameter   | Type               | Required | Description                                                                             |
-| ----------- | ------------------ | -------- | --------------------------------------------------------------------------------------- |
+|-------------|--------------------|----------|-----------------------------------------------------------------------------------------|
 | consent     | Consent            | yes      | User consent and privacy settings relevant for ad personalization and legal compliance. |
 | video       | VideoState         | yes      | Current video playback state and characteristics affecting ad behavior.                 |
 | environment | EnvironmentContext | yes      | Context about the app environment, locale, and device details.                          |
@@ -164,7 +175,7 @@ Updates the SDK with a new state payload.
 ## Consent
 
 | Parameter                    | Type    | Required | Description                                                                   |
-| ---------------------------- | ------- | -------- | ----------------------------------------------------------------------------- |
+|------------------------------|---------|----------|-------------------------------------------------------------------------------|
 | ccpaConsent                  | string  | yes      | User’s consent status under the California Consumer Privacy Act.              |
 | tcfConsent                   | string  | yes      | Consent string according to the IAB Transparency and Consent Framework (TCF). |
 | isEnabledForTcf              | boolean | yes      | Flag indicating if TCF enforcement is enabled for this user/session.          |
@@ -175,7 +186,7 @@ Updates the SDK with a new state payload.
 ## VideoState
 
 | Parameter        | Type    | Required | Description                                                   |
-| ---------------- | ------- | -------- | ------------------------------------------------------------- |
+|------------------|---------|----------|---------------------------------------------------------------|
 | id               | string  | yes      | The video id                                                  |
 | isAutoplay       | boolean | yes      | Whether the video is set to autoplay.                         |
 | type             | string  | yes      | Indicates if the type of the video. LIVE \| STREAM            |
@@ -187,7 +198,7 @@ Updates the SDK with a new state payload.
 ## EnvironmentContext
 
 | Parameter      | Type   | Required | Description                                                       |
-| -------------- | ------ | -------- | ----------------------------------------------------------------- |
+|----------------|--------|----------|-------------------------------------------------------------------|
 | appName        | string | yes      | Name of the app or website embedding the player.                  |
 | locale         | string | yes      | Locale or language setting for the user session.                  |
 | topDomain      | string | yes      | The top-level domain of the page embedding the player.            |
@@ -200,11 +211,18 @@ Updates the SDK with a new state payload.
 ## PlayerContext
 
 | Parameter                  | Type             | Required | Description                                                      |
-| -------------------------- | ---------------- | -------- | ---------------------------------------------------------------- |
+|----------------------------|------------------|----------|------------------------------------------------------------------|
 | videoTag                   | HTMLVideoElement | yes      | Reference to the HTML video element.                             |
 | isPlayerControlsEnabled    | boolean          | yes      | Whether the player controls are enabled.                         |
 | is3rdPartyCookiesAvailable | boolean          | yes      | Indicates if third-party cookies are accessible in this context. |
 | playedVideosCounter        | number           | yes      | Count of videos played during the session/user lifecycle.        |
+
+## DevelopmentOptions
+Intended **only for development and testing purposes.**
+
+| Parameter | Type    | Required | Description                   |
+|-----------|---------|----------|-------------------------------|
+| useFakeAd | boolean | no       | Enables a fake ad simulation. |
 
 <br />
 
@@ -213,7 +231,7 @@ Updates the SDK with a new state payload.
 ## AdDetails
 
 | Parameter         | Type                                 | Description                                                  |
-| ----------------- | ------------------------------------ | ------------------------------------------------------------ |
+|-------------------|--------------------------------------|--------------------------------------------------------------|
 | skipOffset        | number                               | Time in seconds after which the ad can be skipped.           |
 | duration          | number                               | Total duration of the ad in seconds.                         |
 | mediaFile         | string                               | URL of the media file (video/audio) for the ad.              |
@@ -224,7 +242,7 @@ Updates the SDK with a new state payload.
 ## AdEvents
 
 | Parameter                | Description                                        |
-| ------------------------ | -------------------------------------------------- |
+|--------------------------|----------------------------------------------------|
 | AD_BREAK_START           | Sent when the ad break has started                 |
 | AD_BREAK_END             | Sent when the ad break has ended                   |
 | AD_LOAD                  | Sent when the ad has loaded                        |
@@ -245,8 +263,10 @@ Updates the SDK with a new state payload.
 <img src="https://statics.dmcdn.net/h/ad-sdk-web/preroll_sequence.png?v1" alt="Preroll sequence" width="500"/>
 
 ## Midroll sequence
+
 <img src="https://statics.dmcdn.net/h/ad-sdk-web/midroll_sequence.png?v1" alt="Midroll sequence" width="500"/>
 
 ## Postroll sequence
+
 <img src="https://statics.dmcdn.net/h/ad-sdk-web/postroll_sequence.png?v1" alt="Postroll sequence" width="500"/>
 

@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import './index.css';
 import { AdSdkWeb } from '@dailymotion/ad-sdk-web';
-import type { AppState } from '@dailymotion/ad-sdk-web';
+import type { AppState, DevelopmentOptions } from '@dailymotion/ad-sdk-web';
 import { useEffect, useRef } from "react";
 
 const VideoTag: () => JSX.Element = () => {
@@ -44,6 +44,10 @@ const VideoTag: () => JSX.Element = () => {
                 }
             }
 
+            const onAdLoad = () => {
+                console.log('Ad loaded')
+            }
+
             const onAdStart = (): void => {
                 adPosition = adSDK.getAdDetails().position
                 console.log(`Ad Started at position: ${adPosition}`)
@@ -53,11 +57,22 @@ const VideoTag: () => JSX.Element = () => {
                 console.log('Ad ended')
             }
 
+            const onAdBreakEnd = (): void => {
+                console.log('Ad break ended')
+            }
+
+            const onAdBreakStart = (): void => {
+                console.log('Ad break started')
+            }
+
             adSDK.on(adSDK.Events.CONTENT_PAUSE_REQUESTED, onContentPauseRequested)
             adSDK.on(adSDK.Events.CONTENT_RESUME_REQUESTED, onContentResumeRequested)
 
+            adSDK.on(adSDK.Events.AD_LOAD, onAdLoad)
             adSDK.on(adSDK.Events.AD_START, onAdStart)
             adSDK.on(adSDK.Events.AD_END, onAdEnd)
+            adSDK.on(adSDK.Events.AD_BREAK_END, onAdBreakEnd)
+            adSDK.on(adSDK.Events.AD_BREAK_START, onAdBreakStart)
 
             const appState: AppState = {
                 consent: {
@@ -95,7 +110,11 @@ const VideoTag: () => JSX.Element = () => {
                 },
             }
 
-            await adSDK.loadAdsSequence(appState)
+            const developmentOptions: DevelopmentOptions = {
+                useFakeAd: true
+            }
+
+            await adSDK.loadAdsSequence(appState, developmentOptions)
         }
 
         initAdSdk()
