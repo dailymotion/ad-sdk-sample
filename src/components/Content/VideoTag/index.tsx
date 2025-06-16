@@ -57,6 +57,14 @@ const VideoTag: () => JSX.Element = () => {
                 console.log('Ad ended')
             }
 
+            const onAdPlay = (): void => {
+                console.log('Ad is playing')
+            }
+
+            const onAdPause = (): void => {
+                console.log('Ad is paused')
+            }
+
             const onAdBreakEnd = (): void => {
                 console.log('Ad break ended')
             }
@@ -73,6 +81,8 @@ const VideoTag: () => JSX.Element = () => {
             adSDK.on(adSDK.Events.AD_END, onAdEnd)
             adSDK.on(adSDK.Events.AD_BREAK_END, onAdBreakEnd)
             adSDK.on(adSDK.Events.AD_BREAK_START, onAdBreakStart)
+            adSDK.on(adSDK.Events.AD_PLAY, onAdPlay)
+            adSDK.on(adSDK.Events.AD_PAUSE, onAdPause)
 
             const appState: AppState = {
                 consent: {

@@ -74,6 +74,14 @@ const loadAdsSequence = async () => {
     console.log('Ad ended')
   }
   
+  const onAdPlay = (): void => {
+    console.log('Ad is playing')
+  }
+
+  const onAdPause = (): void => {
+    console.log('Ad is paused')
+  }
+  
   const onAdBreakStart = (): void => {
     console.log('Ad break started')
   }
@@ -90,6 +98,8 @@ const loadAdsSequence = async () => {
   adSDK.on(adSDK.Events.AD_END, onAdEnd)
   adSDK.on(adSDK.Events.AD_BREAK_START, onAdBreakStart)
   adSDK.on(adSDK.Events.AD_BREAK_END, onAdBreakEnd)
+  adSDK.on(adSDK.Events.AD_PLAY, onAdPlay)
+  adSDK.on(adSDK.Events.AD_PAUSE, onAdPause)
           
 
   const appState = {
