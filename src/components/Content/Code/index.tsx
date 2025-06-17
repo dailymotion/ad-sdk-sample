@@ -142,7 +142,7 @@ const loadAdsSequence = async () => {
      useFakeAd: true
   }
 
-  await adSDK.loadAdsSequence(appState)
+  await adSDK.loadAdsSequence(appState, developmentOptions)
 }
 
 initAdSdk()
