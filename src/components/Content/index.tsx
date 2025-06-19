@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import VideoTag from "./VideoTag";
 import WorkInProgress from "./WorkInProgress";
 import { useMenu } from "../menuContext.tsx";
-import Code from "./Code";
 import './index.css';
 import { VersionTag } from "./VersionTag";
 
@@ -20,7 +19,6 @@ const Content = (): JSX.Element => {
                 <div className="contentWrapper">
                     <VersionTag />
                     <VideoTag />
-                    <Code />
                 </div>
             );
         } else {
