@@ -49,7 +49,7 @@ If the container is missing or the script fails to load.
 
 ---
 
-### `loadAdsSequence(appState: AppState, developmentOptions?: DevelopmentOptions): void`
+### `loadAdsSequence(appState: AppState, developmentOptions?: DevelopmentOptions): Promise<void>`
 
 Loads ads sequence with the provided contextual information. <br />
 
@@ -166,7 +166,7 @@ Updates the SDK with a new state payload.
 ## AppState
 
 | Parameter   | Type               | Required | Description                                                                             |
-|-------------|--------------------|----------|-----------------------------------------------------------------------------------------|
+| ----------- | ------------------ | -------- | --------------------------------------------------------------------------------------- |
 | consent     | Consent            | yes      | User consent and privacy settings relevant for ad personalization and legal compliance. |
 | video       | VideoState         | yes      | Current video playback state and characteristics affecting ad behavior.                 |
 | environment | EnvironmentContext | yes      | Context about the app environment, locale, and device details.                          |
@@ -175,7 +175,7 @@ Updates the SDK with a new state payload.
 ## Consent
 
 | Parameter                    | Type    | Required | Description                                                                   |
-|------------------------------|---------|----------|-------------------------------------------------------------------------------|
+| ---------------------------- | ------- | -------- | ----------------------------------------------------------------------------- |
 | ccpaConsent                  | string  | yes      | User’s consent status under the California Consumer Privacy Act.              |
 | tcfConsent                   | string  | yes      | Consent string according to the IAB Transparency and Consent Framework (TCF). |
 | isEnabledForTcf              | boolean | yes      | Flag indicating if TCF enforcement is enabled for this user/session.          |
@@ -186,7 +186,7 @@ Updates the SDK with a new state payload.
 ## VideoState
 
 | Parameter        | Type    | Required | Description                                                   |
-|------------------|---------|----------|---------------------------------------------------------------|
+| ---------------- | ------- | -------- | ------------------------------------------------------------- |
 | id               | string  | yes      | The video id                                                  |
 | isAutoplay       | boolean | yes      | Whether the video is set to autoplay.                         |
 | type             | string  | yes      | Indicates if the type of the video. LIVE \| STREAM            |
@@ -198,7 +198,7 @@ Updates the SDK with a new state payload.
 ## EnvironmentContext
 
 | Parameter      | Type   | Required | Description                                                       |
-|----------------|--------|----------|-------------------------------------------------------------------|
+| -------------- | ------ | -------- | ----------------------------------------------------------------- |
 | appName        | string | yes      | Name of the app or website embedding the player.                  |
 | locale         | string | yes      | Locale or language setting for the user session.                  |
 | topDomain      | string | yes      | The top-level domain of the page embedding the player.            |
@@ -211,17 +211,18 @@ Updates the SDK with a new state payload.
 ## PlayerContext
 
 | Parameter                  | Type             | Required | Description                                                      |
-|----------------------------|------------------|----------|------------------------------------------------------------------|
+| -------------------------- | ---------------- | -------- | ---------------------------------------------------------------- |
 | videoTag                   | HTMLVideoElement | yes      | Reference to the HTML video element.                             |
 | isPlayerControlsEnabled    | boolean          | yes      | Whether the player controls are enabled.                         |
 | is3rdPartyCookiesAvailable | boolean          | yes      | Indicates if third-party cookies are accessible in this context. |
 | playedVideosCounter        | number           | yes      | Count of videos played during the session/user lifecycle.        |
 
 ## DevelopmentOptions
+
 Intended **only for development and testing purposes.**
 
 | Parameter | Type    | Required | Description                   |
-|-----------|---------|----------|-------------------------------|
+| --------- | ------- | -------- | ----------------------------- |
 | useFakeAd | boolean | no       | Enables a fake ad simulation. |
 
 <br />
@@ -231,7 +232,7 @@ Intended **only for development and testing purposes.**
 ## AdDetails
 
 | Parameter         | Type                                 | Description                                                  |
-|-------------------|--------------------------------------|--------------------------------------------------------------|
+| ----------------- | ------------------------------------ | ------------------------------------------------------------ |
 | skipOffset        | number                               | Time in seconds after which the ad can be skipped.           |
 | duration          | number                               | Total duration of the ad in seconds.                         |
 | mediaFile         | string                               | URL of the media file (video/audio) for the ad.              |
@@ -242,7 +243,7 @@ Intended **only for development and testing purposes.**
 ## AdEvents
 
 | Parameter                | Description                                        |
-|--------------------------|----------------------------------------------------|
+| ------------------------ | -------------------------------------------------- |
 | AD_BREAK_START           | Sent when the ad break has started                 |
 | AD_BREAK_END             | Sent when the ad break has ended                   |
 | AD_LOAD                  | Sent when the ad has loaded                        |
@@ -269,4 +270,3 @@ Intended **only for development and testing purposes.**
 ## Postroll sequence
 
 <img src="https://statics.dmcdn.net/h/ad-sdk-web/postroll_sequence.png?v1" alt="Postroll sequence" width="500"/>
-
