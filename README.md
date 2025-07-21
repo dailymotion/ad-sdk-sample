@@ -174,14 +174,15 @@ Updates the SDK with a new state payload.
 
 ## Consent
 
-| Parameter                    | Type    | Required | Description                                                                   |
-| ---------------------------- | ------- | -------- | ----------------------------------------------------------------------------- |
-| ccpaConsent                  | string  | yes      | User’s consent status under the California Consumer Privacy Act.              |
-| tcfConsent                   | string  | yes      | Consent string according to the IAB Transparency and Consent Framework (TCF). |
-| isEnabledForTcf              | boolean | yes      | Flag indicating if TCF enforcement is enabled for this user/session.          |
-| tcf2HasConsentForGoogle      | boolean | yes      | Whether consent has been given for Google in TCF v2 context.                  |
-| tcf2HasConsentForDailymotion | boolean | yes      | Whether consent has been given for Dailymotion in TCF v2 context.             |
-| isGdprApplicable             | boolean | yes      | Indicates if GDPR regulations apply to the current user/session.              |
+| Parameter                       | Type     | Required | Description                                                                    |
+| ------------------------------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| ccpaConsent                     | string   | yes      | User’s consent status under the California Consumer Privacy Act.               |
+| tcfConsent                      | string   | yes      | Consent string according to the IAB Transparency and Consent Framework (TCF).  |
+| tcf2HasConsentForGoogle         | boolean  | yes      | Whether consent has been given for Google in TCF v2 context.                   |
+| tcf2HasConsentForDailymotion    | boolean  | yes      | Whether consent has been given for Dailymotion in TCF v2 context.              |
+| isGdprApplicable                | boolean  | yes      | Indicates if GDPR regulations apply to the current user/session.               |
+| gppConsentStringFromPlayer      | string   | yes      | GPP consent string received from the player.                                   |
+| gppApplicableSectionsFromPlayer | number[] | yes      | Array of GPP section IDs that apply to the user based on player configuration. |
 
 ## VideoState
 
@@ -197,25 +198,25 @@ Updates the SDK with a new state payload.
 
 ## EnvironmentContext
 
-| Parameter      | Type   | Required | Description                                                       |
-| -------------- | ------ | -------- | ----------------------------------------------------------------- |
-| appName        | string | yes      | Name of the app or website embedding the player.                  |
-| locale         | string | yes      | Locale or language setting for the user session.                  |
-| topDomain      | string | yes      | The top-level domain of the page embedding the player.            |
-| embedder       | string | yes      | Identifier or name of the embedding entity or partner.            |
-| clientType     | string | yes      | Type of client (e.g., web, mobile app, CTV).                      |
-| deviceId       | string | yes      | Unique identifier for the user’s device.                          |
-| trafficSegment | number | yes      | Numeric segment ID used for traffic or user segmentation.         |
-| v1st           | string | yes      | A unique ID automatically assigned to your device by Dailymotion. |
+| Parameter                  | Type    | Required | Description                                                       |
+| -------------------------- | ------- | -------- | ----------------------------------------------------------------- |
+| appName                    | string  | yes      | Name of the app or website embedding the player.                  |
+| locale                     | string  | yes      | Locale or language setting for the user session.                  |
+| topDomain                  | string  | yes      | The top-level domain of the page embedding the player.            |
+| embedder                   | string  | yes      | Identifier or name of the embedding entity or partner.            |
+| clientType                 | string  | yes      | Type of client (e.g., web, mobile app, CTV).                      |
+| deviceId                   | string  | yes      | Unique identifier for the user’s device.                          |
+| trafficSegment             | number  | yes      | Numeric segment ID used for traffic or user segmentation.         |
+| v1st                       | string  | yes      | A unique ID automatically assigned to your device by Dailymotion. |
+| is3rdPartyCookiesAvailable | boolean | yes      | Indicates if third-party cookies are accessible in this context.  |
 
 ## PlayerContext
 
-| Parameter                  | Type             | Required | Description                                                      |
-| -------------------------- | ---------------- | -------- | ---------------------------------------------------------------- |
-| videoTag                   | HTMLVideoElement | yes      | Reference to the HTML video element.                             |
-| isPlayerControlsEnabled    | boolean          | yes      | Whether the player controls are enabled.                         |
-| is3rdPartyCookiesAvailable | boolean          | yes      | Indicates if third-party cookies are accessible in this context. |
-| playedVideosCounter        | number           | yes      | Count of videos played during the session/user lifecycle.        |
+| Parameter               | Type             | Required | Description                                               |
+| ----------------------- | ---------------- | -------- | --------------------------------------------------------- |
+| videoTag                | HTMLVideoElement | yes      | Reference to the HTML video element.                      |
+| isPlayerControlsEnabled | boolean          | yes      | Whether the player controls are enabled.                  |
+| playedVideosCounter     | number           | yes      | Count of videos played during the session/user lifecycle. |
 
 ## DevelopmentOptions
 
