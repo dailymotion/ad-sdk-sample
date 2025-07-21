@@ -13,7 +13,7 @@
     "copy-files": "cp docs/index.html docs/404.html && cp node_modules/@dailymotion/ad-sdk-web/README.md ./README.md"
   },
   "dependencies": {
-    "@dailymotion/ad-sdk-web": "^0.0.12",
+    "@dailymotion/ad-sdk-web": "^0.0.14",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.1"

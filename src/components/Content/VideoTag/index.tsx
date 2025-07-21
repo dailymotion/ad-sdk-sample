@@ -88,10 +88,11 @@ const VideoTag: () => JSX.Element = () => {
                 consent: {
                     ccpaConsent: '',
                     tcfConsent: '',
-                    isEnabledForTcf: false,
                     tcf2HasConsentForGoogle: false,
                     tcf2HasConsentForDailymotion: false,
                     isGdprApplicable: false,
+                    gppConsentStringFromPlayer: '',
+                    gppApplicableSectionsFromPlayer: [],
                 },
                 video: {
                     id: 'x123',
@@ -101,6 +102,9 @@ const VideoTag: () => JSX.Element = () => {
                     isSeekable: false,
                     viewId: '',
                     duration: 62,
+                    publisherId: 'publisher-id',
+                    publisherType: 'publisher-type',
+                    publisherReference: 'publisher-reference',
                 },
                 environment: {
                     appName: '',
@@ -111,11 +115,11 @@ const VideoTag: () => JSX.Element = () => {
                     deviceId: '',
                     trafficSegment: 0,
                     v1st: '',
+                    is3rdPartyCookiesAvailable: false,
                 },
                 player: {
                     videoTag: videoTag,
                     isPlayerControlsEnabled: false,
-                    is3rdPartyCookiesAvailable: false,
                     playedVideosCounter: 0,
                 },
             }
