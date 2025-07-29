@@ -186,15 +186,18 @@ Updates the SDK with a new state payload.
 
 ## VideoState
 
-| Parameter        | Type    | Required | Description                                                   |
-| ---------------- | ------- | -------- | ------------------------------------------------------------- |
-| id               | string  | yes      | The video id                                                  |
-| isAutoplay       | boolean | yes      | Whether the video is set to autoplay.                         |
-| type             | string  | yes      | Indicates if the type of the video. LIVE \| STREAM            |
-| isCurrentTimeDVR | boolean | yes      | Whether the current playback position is within a DVR window. |
-| isSeekable       | boolean | yes      | Whether the video player supports seeking functionality.      |
-| duration         | number  | no       | The duration of the video                                     |
-| viewId           | string  | yes      | Unique identifier for the video view or playback session.     |
+| Parameter          | Type    | Required | Description                                                   |
+|--------------------|---------|----------|---------------------------------------------------------------|
+| id                 | string  | yes      | The video id                                                  |
+| isAutoplay         | boolean | yes      | Whether the video is set to autoplay.                         |
+| type               | string  | yes      | Indicates if the type of the video. LIVE \| STREAM            |
+| isCurrentTimeDVR   | boolean | yes      | Whether the current playback position is within a DVR window. |
+| isSeekable         | boolean | yes      | Whether the video player supports seeking functionality.      |
+| duration           | number  | no       | The duration of the video                                     |
+| viewId             | string  | yes      | Unique identifier for the video view or playback session.     |
+| publisherId        | string  | yes      | Identifier of the content publisher.                          |
+| publisherType      | string  | yes      | Type/category of the publisher.                               |
+| publisherReference | string  | yes      | Reference code or identifier of the publisher.                |
 
 ## EnvironmentContext
 
