@@ -35,10 +35,12 @@ const VideoTag: () => JSX.Element = () => {
             let adPosition: string | null = null
 
             const onContentPauseRequested = (): void => {
+                console.log('Content pause requested')
                 videoTag.pause()
             }
 
             const onContentResumeRequested = (): void => {
+                console.log('Content resume requested')
                 if (adSDK.getAdDetails().position !== 'postroll') {
                     videoTag.play()
                 }
