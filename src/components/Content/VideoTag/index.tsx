@@ -40,7 +40,7 @@ const VideoTag: () => JSX.Element = () => {
             }
 
             const onContentResumeRequested = (): void => {
-                console.log('Content resume requested')
+                console.log('Content resume requested', adSDK.getAdDetails().position)
                 if (adSDK.getAdDetails().position !== 'postroll') {
                     videoTag.play()
                 }
@@ -102,7 +102,7 @@ const VideoTag: () => JSX.Element = () => {
                     type: 'STREAM',
                     isCurrentTimeDVR: false,
                     isSeekable: false,
-                    viewId: '',
+                    viewId: 'view-123',
                     duration: 62,
                     publisherId: 'publisher-id',
                     publisherType: 'publisher-type',
