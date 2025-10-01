@@ -6,5 +6,6 @@
 }
 
 .videoPlayer {
-    max-width: 80vw;
+    width: 80vw;
+    max-width: 100%;
 }
