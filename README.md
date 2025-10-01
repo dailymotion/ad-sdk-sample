@@ -174,30 +174,32 @@ Updates the SDK with a new state payload.
 
 ## Consent
 
-| Parameter                       | Type     | Required | Description                                                                    |
-| ------------------------------- | -------- | -------- | ------------------------------------------------------------------------------ |
-| ccpaConsent                     | string   | yes      | User’s consent status under the California Consumer Privacy Act.               |
-| tcfConsent                      | string   | yes      | Consent string according to the IAB Transparency and Consent Framework (TCF).  |
-| tcf2HasConsentForGoogle         | boolean  | yes      | Whether consent has been given for Google in TCF v2 context.                   |
-| tcf2HasConsentForDailymotion    | boolean  | yes      | Whether consent has been given for Dailymotion in TCF v2 context.              |
-| isGdprApplicable                | boolean  | yes      | Indicates if GDPR regulations apply to the current user/session.               |
-| gppConsentStringFromPlayer      | string   | yes      | GPP consent string received from the player.                                   |
-| gppApplicableSectionsFromPlayer | number[] | yes      | Array of GPP section IDs that apply to the user based on player configuration. |
+| Parameter                       | Type     | Required | Default       | Description                                                                    |
+|---------------------------------|----------|----------|---------------|--------------------------------------------------------------------------------|
+| ccpaConsent                     | string   | no       | `'1---'`      | User’s consent status under the California Consumer Privacy Act.               |
+| tcfConsent                      | string   | no       | `''`          | Consent string according to the IAB Transparency and Consent Framework (TCF).  |
+| tcf2HasConsentForGoogle         | boolean  | no       | `false`       | Whether consent has been given for Google in TCF v2 context.                   |
+| tcf2HasConsentForDailymotion    | boolean  | no       | `false`       | Whether consent has been given for Dailymotion in TCF v2 context.              |
+| isGdprApplicable                | boolean  | no       | `false`       | Indicates if GDPR regulations apply to the current user/session.               |
+| gppConsentStringFromPlayer      | string   | no       | `''`          | GPP consent string received from the player.                                   |
+| gppApplicableSectionsFromPlayer | number[] | no       | `[]`          | Array of GPP section IDs that apply to the user based on player configuration. |
+
 
 ## VideoState
 
-| Parameter          | Type    | Required | Description                                                   |
-|--------------------|---------|----------|---------------------------------------------------------------|
-| id                 | string  | yes      | The video id                                                  |
-| isAutoplay         | boolean | yes      | Whether the video is set to autoplay.                         |
-| type               | string  | yes      | Indicates if the type of the video. LIVE \| STREAM            |
-| isCurrentTimeDVR   | boolean | yes      | Whether the current playback position is within a DVR window. |
-| isSeekable         | boolean | yes      | Whether the video player supports seeking functionality.      |
-| duration           | number  | no       | The duration of the video                                     |
-| viewId             | string  | yes      | Unique identifier for the video view or playback session.     |
-| publisherId        | string  | yes      | Identifier of the content publisher.                          |
-| publisherType      | string  | yes      | Type/category of the publisher.                               |
-| publisherReference | string  | yes      | Reference code or identifier of the publisher.                |
+| Parameter          | Type    | Required | Default | Description                                                   |
+|--------------------|---------|----------|---------|---------------------------------------------------------------|
+| id                 | string  | yes      | —       | The video id                                                  |
+| isAutoplay         | boolean | yes      | —       | Whether the video is set to autoplay.                         |
+| type               | string  | yes      | —       | Indicates if the type of the video. `LIVE` \| `STREAM`        |
+| isCurrentTimeDVR   | boolean | yes      | —       | Whether the current playback position is within a DVR window. |
+| isSeekable         | boolean | yes      | —       | Whether the video player supports seeking functionality.      |
+| duration           | number  | no       | `0`     | The duration of the video                                     |
+| viewId             | string  | yes      | —       | Unique identifier for the video view or playback session.     |
+| publisherId        | string  | yes      | —       | Identifier of the content publisher.                          |
+| publisherType      | string  | yes      | —       | Type/category of the publisher.                               |
+| publisherReference | string  | yes      | —       | Reference code or identifier of the publisher.                |
+
 
 ## EnvironmentContext
 
