@@ -174,32 +174,39 @@ Updates the SDK with a new state payload.
 
 ## Consent
 
-| Parameter                       | Type     | Required | Default       | Description                                                                    |
-|---------------------------------|----------|----------|---------------|--------------------------------------------------------------------------------|
-| ccpaConsent                     | string   | no       | `'1---'`      | User’s consent status under the California Consumer Privacy Act.               |
-| tcfConsent                      | string   | no       | `''`          | Consent string according to the IAB Transparency and Consent Framework (TCF).  |
-| tcf2HasConsentForGoogle         | boolean  | no       | `false`       | Whether consent has been given for Google in TCF v2 context.                   |
-| tcf2HasConsentForDailymotion    | boolean  | no       | `false`       | Whether consent has been given for Dailymotion in TCF v2 context.              |
-| isGdprApplicable                | boolean  | no       | `false`       | Indicates if GDPR regulations apply to the current user/session.               |
-| gppConsentStringFromPlayer      | string   | no       | `''`          | GPP consent string received from the player.                                   |
-| gppApplicableSectionsFromPlayer | number[] | no       | `[]`          | Array of GPP section IDs that apply to the user based on player configuration. |
-
+| Parameter                       | Type     | Required | Default  | Description                                                                    |
+| ------------------------------- | -------- | -------- | -------- | ------------------------------------------------------------------------------ |
+| ccpaConsent                     | string   | no       | `'1---'` | User’s consent status under the California Consumer Privacy Act.               |
+| tcfConsent                      | string   | no       | `''`     | Consent string according to the IAB Transparency and Consent Framework (TCF).  |
+| tcf2HasConsentForGoogle         | boolean  | no       | `false`  | Whether consent has been given for Google in TCF v2 context.                   |
+| tcf2HasConsentForDailymotion    | boolean  | no       | `false`  | Whether consent has been given for Dailymotion in TCF v2 context.              |
+| isGdprApplicable                | boolean  | no       | `false`  | Indicates if GDPR regulations apply to the current user/session.               |
+| gppConsentStringFromPlayer      | string   | no       | `''`     | GPP consent string received from the player.                                   |
+| gppApplicableSectionsFromPlayer | number[] | no       | `[]`     | Array of GPP section IDs that apply to the user based on player configuration. |
 
 ## VideoState
 
-| Parameter          | Type    | Required | Default | Description                                                   |
-|--------------------|---------|----------|---------|---------------------------------------------------------------|
-| id                 | string  | yes      | —       | The video id                                                  |
-| isAutoplay         | boolean | yes      | —       | Whether the video is set to autoplay.                         |
-| type               | string  | yes      | —       | Indicates if the type of the video. `LIVE` \| `STREAM`        |
-| isCurrentTimeDVR   | boolean | yes      | —       | Whether the current playback position is within a DVR window. |
-| isSeekable         | boolean | yes      | —       | Whether the video player supports seeking functionality.      |
-| duration           | number  | no       | `0`     | The duration of the video                                     |
-| viewId             | string  | yes      | —       | Unique identifier for the video view or playback session.     |
-| publisherId        | string  | yes      | —       | Identifier of the content publisher.                          |
-| publisherType      | string  | yes      | —       | Type/category of the publisher.                               |
-| publisherReference | string  | yes      | —       | Reference code or identifier of the publisher.                |
-
+| Parameter          | Type    | Required | Default | Description                                                      |
+| ------------------ | ------- | -------- | ------- | ---------------------------------------------------------------- |
+| id                 | string  | yes      | —       | The video id                                                     |
+| isAutoplay         | boolean | yes      | —       | Whether the video is set to autoplay.                            |
+| type               | string  | yes      | —       | Indicates if the type of the video. `LIVE` \| `STREAM`           |
+| isCurrentTimeDVR   | boolean | yes      | —       | Whether the current playback position is within a DVR window.    |
+| isSeekable         | boolean | yes      | —       | Whether the video player supports seeking functionality.         |
+| duration           | number  | no       | `0`     | The duration of the video                                        |
+| viewId             | string  | yes      | —       | Unique identifier for the video view or playback session.        |
+| publisherId        | string  | yes      | —       | Identifier of the content publisher.                             |
+| publisherType      | string  | yes      | —       | Type/category of the publisher.                                  |
+| publisherReference | string  | yes      | —       | Reference code or identifier of the publisher.                   |
+| playlistId         | string  | no       | `''`    | The playlist id.                                                 |
+| streamTech         | string  | no       | `''`    | Playback technology used by the stream. `'hls.js'` \| `'native'` |
+| ownerId            | string  | no       | `''`    | Identifier of the video owner account.                           |
+| ownerParentId      | string  | no       | `''`    | Identifier of the owner's parent.                                |
+| protectedDelivery  | boolean | no       | —       |                                                                  |
+| createdTime        | number  | no       | `0`     | Video creation timestamp in milliseconds since epoch.            |
+| isPasswordProtected| boolean | no       | false   | Whether the video requires a password to view.                   |
+| isPrivate          | boolean | no       | false   | Whether the video is private.                                    |
+| mimeType           | string  | yes      | —       | MIME type of the content, e.g., `video/mp4`.                     |
 
 ## EnvironmentContext
 
@@ -214,14 +221,18 @@ Updates the SDK with a new state payload.
 | trafficSegment             | number  | yes      | Numeric segment ID used for traffic or user segmentation.         |
 | v1st                       | string  | yes      | A unique ID automatically assigned to your device by Dailymotion. |
 | is3rdPartyCookiesAvailable | boolean | yes      | Indicates if third-party cookies are accessible in this context.  |
+| osFamily                   | string  | no       | Operating system family parsed from UA, e.g., `Linux`.            |
+| osName                     | string  | no       | Operating system name parsed from UA, e.g., `Ubuntu`.             |
+| uaFamily                   | string  | no       | User agent family, e.g., `Chromium`.                              |
+| uaName                     | string  | no       | User agent name, e.g., `Chrome`.                                  |
+| uaVersion                  | string  | no       | User agent version, e.g., `120.0.0`.                              |
 
 ## PlayerContext
 
-| Parameter               | Type             | Required | Description                                               |
-| ----------------------- | ---------------- | -------- | --------------------------------------------------------- |
-| videoTag                | HTMLVideoElement | yes      | Reference to the HTML video element.                      |
-| isPlayerControlsEnabled | boolean          | yes      | Whether the player controls are enabled.                  |
-| playedVideosCounter     | number           | yes      | Count of videos played during the session/user lifecycle. |
+| Parameter               | Type             | Required | Description                              |
+| ----------------------- | ---------------- | -------- | ---------------------------------------- |
+| videoTag                | HTMLVideoElement | yes      | Reference to the HTML video element.     |
+| isPlayerControlsEnabled | boolean          | yes      | Whether the player controls are enabled. |
 
 ## DevelopmentOptions
 

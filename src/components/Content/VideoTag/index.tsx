@@ -107,6 +107,7 @@ const VideoTag: () => JSX.Element = () => {
                     publisherId: 'publisher-id',
                     publisherType: 'publisher-type',
                     publisherReference: 'publisher-reference',
+                    mimeType: "video/mp4",
                 },
                 environment: {
                     appName: '',
@@ -122,7 +123,6 @@ const VideoTag: () => JSX.Element = () => {
                 player: {
                     videoTag: videoTag,
                     isPlayerControlsEnabled: false,
-                    playedVideosCounter: 0,
                 },
             }
 
