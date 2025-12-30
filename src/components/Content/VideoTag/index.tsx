@@ -40,8 +40,8 @@ const VideoTag: () => JSX.Element = () => {
             }
 
             const onContentResumeRequested = (): void => {
-                console.log('Content resume requested', adSDK.getAdDetails().position)
-                if (adSDK.getAdDetails().position !== 'postroll') {
+                console.log('Content resume requested', adSDK.getAdDetails()?.position)
+                if (adSDK.getAdDetails()?.position !== 'postroll') {
                     videoTag.play()
                 }
             }
@@ -51,7 +51,7 @@ const VideoTag: () => JSX.Element = () => {
             }
 
             const onAdStart = (): void => {
-                adPosition = adSDK.getAdDetails().position
+                adPosition = adSDK.getAdDetails()?.position ?? null
                 console.log(`Ad Started at position: ${adPosition}`)
             }
 
@@ -137,21 +137,21 @@ const VideoTag: () => JSX.Element = () => {
     }, []);
 
     return (
-            <div className="videoPlayerContainer" ref={containerRef}>
-                <video
-                    id="videoPlayer"
-                    className="videoPlayer"
-                    controls
-                    muted
-                    ref={videoRef}
-                >
-                    <source
-                        src="https://statics.dmcdn.net/h/html/media/Dailymotion-Change-ton-feed-2023.mp4"
-                        type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+      <div className="videoPlayerContainer" ref={containerRef}>
+          <video
+            id="videoPlayer"
+            className="videoPlayer"
+            controls
+            muted
+            ref={videoRef}
+          >
+              <source
+                src="https://statics.dmcdn.net/h/html/media/Dailymotion-Change-ton-feed-2023.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+          </video>
+      </div>
     )
 }
 
